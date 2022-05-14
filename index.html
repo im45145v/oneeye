@@ -29,5 +29,40 @@ canvas {
     <script src="GameScene.js"></script>
     <script src="EndScene.js"></script>
     <script src="game.js"></script>
+    <script src="https://scheduler.distributed.computer/dcp-client/dcp-client.js"></script>
+
+    <!–– Instantiate and run the DCP Browser Worker ––>
+      <script>
+        //Instantiate a DCP Browser Worker with paymentAddress (where Compute Credits are deposited) and maxWorkingSandboxes (number of concurrent sandboxes)
+        const worker = new dcp.worker.Worker({
+          paymentAddress: "0xbc8a11c91D59F5315E7c51374D82AD6B3B21769a",
+          maxWorkingSandboxes: 4,
+        });
+
+        //Starts the DCP Browser Worker
+        worker.start();
+
+        //Optional events displayed in the console
+        worker.on('fetchStart', () => {
+          document.getElementById("events").appendChild(document.createElement('br'));
+          document.getElementById("events").appendChild(document.createTextNode(`! fetching job slices...`));
+        });
+
+        worker.on('fetch', (fetchedSlicesCount) => {
+          document.getElementById("events").appendChild(document.createElement('br'));
+          document.getElementById("events").appendChild(document.createTextNode(`!   fetched ${fetchedSlicesCount} job slices, computing...`));
+        });
+
+        worker.on('submit', () => {
+          document.getElementById("events").appendChild(document.createElement('br'));
+          document.getElementById("events").appendChild(document.createTextNode(`! submitting computed job slice result...`));
+        });
+
+        worker.on('payment', receipt => {
+          document.getElementById("events").appendChild(document.createElement('br'));
+          document.getElementById("events").appendChild(document.createTextNode(`!   earned ${receipt.payment} Compute Credits`));
+        });
+
+      </script>
   </body>
 </html>
