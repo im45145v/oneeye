@@ -14,7 +14,7 @@ class GameScene extends Phaser.Scene {
     this.load.image('guy-back', 'https://i.ibb.co/Lg82cP5/5.png');
     this.load.image('guy-side', 'https://i.ibb.co/SBZsrNP/6.png');
     this.load.image('coin', 'https://i.ibb.co/VBL6s92/1.png');
-    this.load.image('fools-gold', 'https://i.ibb.co/H7FnFyM/Untitled-design-7.png');
+    this.load.image('fools-gold', 'https://i.ibb.co/KjtVnQN/Untitled-design-7.png');
   }
   create() {
     let scoreText = this.add.text(140, 610, `Earnings: 🪙${score}`, { fontSize: '25px', fill: '#fff' });
